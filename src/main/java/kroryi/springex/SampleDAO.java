@@ -1,4 +1,8 @@
 package kroryi.springex;
 
-public class SampleDAO {
+import org.springframework.stereotype.Repository;
+
+
+public interface SampleDAO {
+
 }
