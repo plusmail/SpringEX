@@ -4,8 +4,6 @@
     <title>Title</title>
 </head>
 <body>
-<h1>안녕 스프링......</h1>
-<img src="/images/aaaa.png" alt="">
 
 </body>
 </html>

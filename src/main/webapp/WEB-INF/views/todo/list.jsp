@@ -1,11 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Todo List페이지</title>
 </head>
 <body>
-<h1>안녕 스프링......</h1>
-<img src="/images/aaaa.png" alt="">
+
+<h1>Todo List페이지</h1>
 
 </body>
 </html>
