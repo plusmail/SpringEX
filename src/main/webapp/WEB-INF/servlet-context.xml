@@ -30,6 +30,7 @@
 
     <context:component-scan base-package="kroryi.springex.controller"/>
     <context:component-scan base-package="kroryi.springex.config"/>
+    <context:component-scan base-package="kroryi.springex.service"/>
 
 
     <bean id="conversionService"
