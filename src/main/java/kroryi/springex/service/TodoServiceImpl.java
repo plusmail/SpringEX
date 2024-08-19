@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 @Log4j2
 @RequiredArgsConstructor
 public class TodoServiceImpl implements TodoService {
+
     private final TodoMapper todoMapper;
     private final ModelMapper modelMapper;
 
