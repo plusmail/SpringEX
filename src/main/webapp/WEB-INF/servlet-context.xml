@@ -18,6 +18,8 @@
     <mvc:resources mapping="/js/**" location="/resources/js/"/>
     <mvc:resources mapping="/images/**" location="/resources/images/"/>
     <mvc:resources mapping="/css/**" location="/resources/css/"/>
+    <mvc:resources mapping="/bootstrap/**" location="/resources/bootstrap-5.2.3-dist/"/>
+    <mvc:resources mapping="/admin/**" location="/resources/sb-admin-2/"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"/>
@@ -27,6 +29,7 @@
     </bean>
 
     <context:component-scan base-package="kroryi.springex.controller"/>
+    <context:component-scan base-package="kroryi.springex.config"/>
 
 
     <bean id="conversionService"
