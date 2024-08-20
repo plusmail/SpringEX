@@ -1,7 +1,6 @@
 package kroryi.springex.controller;
 
 
-import jakarta.validation.Valid;
 import kroryi.springex.dto.TodoDTO;
 import kroryi.springex.service.TodoService;
 import lombok.extern.log4j.Log4j2;
@@ -12,6 +11,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.validation.Valid;
 
 @Log4j2
 @Controller
@@ -36,8 +37,6 @@ public class TodoController {
                            BindingResult bindingResult,
                            RedirectAttributes ra){
         log.info("POST todo -> register controller");
-        log.info("11111111111111111111111-> {}", bindingResult.getAllErrors());
-
         //현재 문제 발생해서 에러처리 않됨.
         if(bindingResult.hasErrors()){
             log.info("binding errors");

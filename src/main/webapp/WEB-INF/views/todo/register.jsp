@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css">
 <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -30,6 +31,25 @@
             </div>
         </div>
     </form>
+
+    <script>
+        const serverValidResult = {}
+        <c:forEach items="${errors}" var="error">
+          serverValidResult['${error.getField()}'] = '${error.defaultMessage}'
+        </c:forEach>
+
+        console.log(serverValidResult)
+        let errorMessages = "";
+        for(const field in serverValidResult){
+            console.log(field)
+                errorMessages +=field +":" + serverValidResult[field] +"\n";
+        }
+        if(errorMessages){
+            alert("검증 에러들 : \n" + errorMessages)
+        }
+
+    </script>
+
 </div>
 
 </body>

@@ -1,9 +1,10 @@
 package kroryi.springex.dto;
 
-import jakarta.validation.constraints.Future;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
+
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 
@@ -14,11 +15,11 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class TodoDTO {
     private Long tno;
-    @NotNull(message="제목을 입력하세요.")
+    @NotEmpty(message="제목을 입력하세요.")
     private String title;
     @Future
     private LocalDate dueDate;
     private boolean finished;
-    @NotEmpty
+    @NotEmpty(message="작성자를 입력하세요.")
     private String writer;
 }
