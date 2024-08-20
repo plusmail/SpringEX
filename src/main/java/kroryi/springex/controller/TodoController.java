@@ -1,6 +1,8 @@
 package kroryi.springex.controller;
 
 
+import kroryi.springex.dto.PageRequestDTO;
+import kroryi.springex.dto.PageResponseDTO;
 import kroryi.springex.dto.TodoDTO;
 import kroryi.springex.service.TodoService;
 import lombok.extern.log4j.Log4j2;
@@ -12,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Log4j2
 @Controller
@@ -22,13 +27,12 @@ public class TodoController {
     @Autowired
     private TodoService todoService;
 
-    @RequestMapping("/list")
-    public void list() {
-        log.info("todo -> list controller");
-    }
-
     @RequestMapping(value="/register", method = RequestMethod.GET)
-    public void register(){
+    public void register(Model model){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String today = LocalDate.now().format(formatter);
+        log.info(today);
+        model.addAttribute("today", today);
         log.info("todo -> register controller");
     }
 
@@ -50,6 +54,87 @@ public class TodoController {
 
         return "redirect:/todo/list";
     }
+
+//    @RequestMapping("/list")
+//    public String list(Model model){
+//
+//        model.addAttribute("dtoList", todoService.getAll());
+//
+//        return "todo/list";
+//    }
+
+    @RequestMapping("/list")
+    public String list(@Valid PageRequestDTO pageRequestDTO,
+                       BindingResult br,
+                       Model model){
+        log.info("pageRequestDTO -> list controller");
+        if(br.hasErrors()){
+            pageRequestDTO = PageRequestDTO.builder().build();
+        }
+
+        model.addAttribute("responeDTO", todoService.getList(pageRequestDTO));
+        //requestDTO에는 아래의 데이터가 있다.
+        // PageResponseDTO-> page,size,total, dtoList, start,end, prev,next, last
+
+        return "todo/list";
+    }
+
+    @RequestMapping({"/read","modify"})
+    public void read(Long tno, Model model){
+        TodoDTO todoDTO = todoService.getOne(tno);
+        model.addAttribute("dto", todoDTO);
+    }
+
+    @RequestMapping(value="/modify", method = RequestMethod.POST)
+    public String modify(@Valid TodoDTO todoDTO,
+                         BindingResult br,
+                         RedirectAttributes ra){
+        if(br.hasErrors()){
+            log.info("binding errors");
+            ra.addFlashAttribute("errors", br.getAllErrors());
+            ra.addAttribute("tno", todoDTO.getTno());
+            return "redirect:/todo/modify";
+        }
+        log.info(todoDTO);
+        todoService .modify(todoDTO);
+        return "redirect:/todo/list";
+
+    }
+    @RequestMapping(value="/remove", method = RequestMethod.POST)
+    public String remove(Long tno, RedirectAttributes ra){
+        log.info("POST todo -> remove controller");
+        log.info("tno: {}", tno);
+
+        todoService.remove(tno);
+        return "redirect:/todo/list";
+    }
+
+
+
+//    @RequestMapping({"/read","modify"})
+//    public String readOrModify(Long tno, Model model, HttpServletRequest req){
+//        TodoDTO todoDTO = todoService.getOne(tno);
+//        model.addAttribute("dto", todoDTO);
+//        String reqURI = req.getRequestURI();
+//        if(reqURI.contains("/modify")){
+//            return "/todo/modify";
+//        }else{
+//            return "/todo/read";
+//        }
+//    }
+//
+
+//    @RequestMapping("/read")
+//    public void read(Long tno, Model model){
+//        TodoDTO todoDTO = todoService.getOne(tno);
+//        model.addAttribute("dto", todoDTO);
+//    }
+//
+//    @RequestMapping("/modify")
+//    public void modify(Long tno, Model model){
+//        TodoDTO todoDTO = todoService.getOne(tno);
+//        model.addAttribute("dto", todoDTO);
+//    }
 
 
 }

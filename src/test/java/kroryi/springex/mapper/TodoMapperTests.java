@@ -11,6 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Log4j2
 @ExtendWith(SpringExtension.class)
@@ -27,15 +28,15 @@ public class TodoMapperTests {
     private TodoService todoService;
 
     @Test
-    public void testNow(){
+    public void testNow() {
         log.info(mapper.getTime());
     }
 
     @Test
-    public void testInsert(){
+    public void testInsert() {
         TodoVO todoVo = TodoVO.builder()
                 .title("스프링 테스트 입니다.")
-                .dueDate(LocalDate.of(2024,8,29))
+                .dueDate(LocalDate.of(2024, 8, 29))
                 .finished(true)
                 .writer("홍길동")
                 .build();
@@ -43,7 +44,7 @@ public class TodoMapperTests {
     }
 
     @Test
-    public void testRegister(){
+    public void testRegister() {
         TodoDTO todoDTO = TodoDTO.builder()
                 .title("테스트 입니다.")
                 .dueDate(LocalDate.now())
@@ -54,5 +55,17 @@ public class TodoMapperTests {
         todoService.register(todoDTO);
     }
 
+    @Test
+    public void testSelectAll() {
+
+        List<TodoVO> voList = todoMapper.selectAll();
+        voList.forEach(vo -> log.info(vo));
+    }
+
+    @Test
+    public void testSelectOne(){
+        TodoVO todoVO = todoMapper.selectOne(27L);
+        log.info(todoVO);
+    }
 
 }
