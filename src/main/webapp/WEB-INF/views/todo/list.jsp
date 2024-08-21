@@ -34,6 +34,49 @@
         </nav>
     </div>
 </div>
+
+<div class="row content">
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">검색</h5>
+                <form action="/todo/list" method="get">
+                    <input type="hidden" name="size" value="${pageRequestDTO.size}">
+                    <div class="mb-3">
+                        <input type="checkbox"
+                               name="finished" ${pageRequestDTO.finished? "checked":""}> 완료여부
+                    </div>
+                    <div class="mb-3">
+                        <input type="checkbox" name="types" value="t"
+                        ${pageRequestDTO.checkType("t")?"checked":""}
+                        >제목
+                        <input type="checkbox" name="types" value="w"
+                        ${pageRequestDTO.checkType("w")?"checked" :""}
+                        >작성자
+                        <input type="text" name="keyword" class="form-control"
+                        value="${pageRequestDTO.keyword}"
+                        >
+                    </div>
+                    <div class="input-group mb-3 dueDateDiv">
+                        <input type="date" name="from" class="form-control"
+                        value="${pageRequestDTO.from}"
+                        >
+                        <input type="date" name="to" class="form-control"
+                        value="${pageRequestDTO.to}">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="float-end">
+                            <button class="btn btn-primary" type="submit">검색</button>
+                            <button class="btn btn-info" type="reset">초기화</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="card-body">
     <h5 class="card-title">내가 해야할일 목록</h5>
     <table class="table">
@@ -47,17 +90,11 @@
         </tr>
         </thead>
         <tbody>
-        ${responeDTO.page}:
-        ${responeDTO.size}:
-        ${responeDTO.total}:
-        ${responeDTO.start}:
-        ${responeDTO.end}:
-        ${responeDTO.prev}:
-        ${responeDTO.next}
         <c:forEach items="${responeDTO.dtoList}" var="dto">
             <tr>
                 <th scope="row">${dto.tno}</th>
-                <td><a href="/todo/read?tno=${dto.tno}" class="text-decoration-none">${dto.title}</a></td>
+                <td><a href="/todo/read?tno=${dto.tno}&${pageRequestDTO.link}"
+                       class="text-decoration-none">${dto.title}</a></td>
                 <td>${dto.writer}</td>
                 <td>${dto.dueDate}</td>
                 <td>${dto.finished}</td>
@@ -66,8 +103,56 @@
         </tbody>
     </table>
 
+    <div class="float-end">
+
+        <ul class="pagination flex-wrap  pagination-sm">
+            <c:if test="${responeDTO.prev}">
+                <li class="page-item">
+                    <a href="" class="page-link"
+                       data-num="${responeDTO.start-1}"
+                    >이전</a>
+                </li>
+            </c:if>
+
+
+            <c:forEach begin="${responeDTO.start}"
+                       end="${responeDTO.end}"
+                       var="num">
+                <li class="page-item  ${responeDTO.page == num ? "active" : ""} ">
+                    <a href="#" class="page-link"
+                       data-num="${num}"
+                    >${num}</a>
+                </li>
+            </c:forEach>
+
+            <c:if test="${responeDTO.next}">
+                <li class="page-item">
+                    <a href="" class="page-link"
+                       data-num="${responeDTO.end +1}"
+                    >다음</a>
+                </li>
+            </c:if>
+        </ul>
+    </div>
 
 
 </div>
+<script>
+    document.querySelector(".pagination").addEventListener("click",
+        e => {
+            e.preventDefault();
+            e.stopPropagation();
+            const target = e.target;
+            if(target.tagName !== "A"){
+                return
+            }
+
+            const num =target.getAttribute("data-num");
+            const formObj = document.querySelector("form");
+            formObj.innerHTML += `<input type='hidden' name='page' value='\${num}'>`
+            formObj.submit();
+        },false)
+
+</script>
 </body>
 </html>

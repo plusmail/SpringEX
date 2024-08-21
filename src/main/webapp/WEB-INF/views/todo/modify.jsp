@@ -47,6 +47,10 @@
             </div>
         </div>
 
+        <input type="hidden" name="page" value="${pageRequestDTO.page}">
+        <input type="hidden" name="size" value="${pageRequestDTO.size}">
+
+
     </form>
 
 </div>
@@ -55,14 +59,14 @@
         (e) => {
             e.preventDefault()
             e.stopPropagation()
-            formObj.action = "/todo/modify"
+            formObj.action = "/todo/modify?${pageRequestDTO.link}"
             formObj.method = "post"
             formObj.submit()
 
         }, false)
     document.querySelector(".btn-secondary").addEventListener("click",
         (e) => {
-            self.location = "/todo/list";
+            self.location = "/todo/list?${pageRequestDTO.link}";
         })
 
     const formObj = document.querySelector("form");
@@ -71,7 +75,7 @@
         (e) => {
             e.preventDefault()
             e.stopPropagation()
-            formObj.action = "/todo/remove"
+            formObj.action = "/todo/remove?${pageRequestDTO.link}"
             formObj.method = "post"
             formObj.submit();
         }, false);

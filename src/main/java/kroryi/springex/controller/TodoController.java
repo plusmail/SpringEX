@@ -68,27 +68,35 @@ public class TodoController {
                        BindingResult br,
                        Model model){
         log.info("pageRequestDTO -> list controller");
+
+        log.info("List-pagereqeustDTO->{}", pageRequestDTO.getLink());
+
         if(br.hasErrors()){
             pageRequestDTO = PageRequestDTO.builder().build();
         }
 
         model.addAttribute("responeDTO", todoService.getList(pageRequestDTO));
-        //requestDTO에는 아래의 데이터가 있다.
-        // PageResponseDTO-> page,size,total, dtoList, start,end, prev,next, last
+        model.addAttribute("pageRequestDTO", pageRequestDTO);
 
         return "todo/list";
     }
 
     @RequestMapping({"/read","modify"})
-    public void read(Long tno, Model model){
+    public void read(Long tno, PageRequestDTO pageRequestDTO, Model model){
         TodoDTO todoDTO = todoService.getOne(tno);
         model.addAttribute("dto", todoDTO);
+        model.addAttribute("pageRequestDTO", pageRequestDTO);
+
     }
 
     @RequestMapping(value="/modify", method = RequestMethod.POST)
-    public String modify(@Valid TodoDTO todoDTO,
+    public String modify(PageRequestDTO pageRequestDTO, @Valid TodoDTO todoDTO,
                          BindingResult br,
                          RedirectAttributes ra){
+        //책하고 다른 부분
+        ra.addAttribute("page",pageRequestDTO.getPage());
+        ra.addAttribute("size", pageRequestDTO.getSize());
+
         if(br.hasErrors()){
             log.info("binding errors");
             ra.addFlashAttribute("errors", br.getAllErrors());
@@ -97,16 +105,25 @@ public class TodoController {
         }
         log.info(todoDTO);
         todoService .modify(todoDTO);
+
         return "redirect:/todo/list";
 
     }
+
+
+
+
+
     @RequestMapping(value="/remove", method = RequestMethod.POST)
-    public String remove(Long tno, RedirectAttributes ra){
+    public String remove(Long tno, PageRequestDTO pageRequestDTO,  RedirectAttributes ra){
         log.info("POST todo -> remove controller");
         log.info("tno: {}", tno);
 
         todoService.remove(tno);
+        ra.addAttribute("page",pageRequestDTO.getPage());
+        ra.addAttribute("size", pageRequestDTO.getSize());
         return "redirect:/todo/list";
+//        return "redirect:/todo/list?${pageRequestDTO.link}";
     }
 
 
