@@ -26,7 +26,6 @@
 <body>
 <!-- Page Header -->
 <tiles:insertAttribute name="header" />
-
 <!-- Page Contents -->
 <tiles:insertAttribute name="body" />
 

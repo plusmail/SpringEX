@@ -4,14 +4,14 @@
 
 <head>
     <title>병원관리 관리자 페이지</title>
-    <jsp:include page="common.jsp"/>
+    <jsp:include page="layouts/admin-common.jsp"/>
 </head>
 
 <body id="page-top">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-        <jsp:include page="sidebar.jsp"/>
+        <jsp:include page="layouts/admin-sidebar.jsp"/>
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -45,10 +45,10 @@
     </a>
 
     <!-- Logout Modal-->
-    <jsp:include page="logout_modal.jsp"/>
+    <jsp:include page="layouts/admin-logout-modal.jsp"/>
 
     <!-- Bootstrap core JavaScript-->
-    <jsp:include page="bootstrap.jsp"/>
+    <jsp:include page="layouts/bootstrap.jsp"/>
 
 </body>
 

@@ -13,39 +13,28 @@ public class AdminController {
 
     @GetMapping("/")
     public String home(Model model) {
-
-        model.addAttribute("content", "dashboard");
-        return "admin/index";
-    }
-
-    @GetMapping("/buttons")
-    public String buttons(Model model) {
-        model.addAttribute("content", "buttons");
-        return "admin/index";
-    }
-
-    @GetMapping("/member")
-    public String member(Model model) {
-        return "home.page";
+        return "admin.index.page";
     }
 
     @GetMapping("/memberlist")
     public String memberlist(Model model) {
-        return "memberlist.page";
+        model.addAttribute("test","testetstesetse");
+        return "admin.memberlist.page";
     }
 
-
-
-
-    @GetMapping("/cards")
-    public String cards() {
-        return "admin/cards";
+    @GetMapping("/memberregister")
+    public String memberregister(Model model) {
+        return "admin.memberregister.page";
     }
 
+    @GetMapping("/memberupdate")
+    public String memberupdate(Model model) {
+        return "admin.memberupdate.page";
+    }
 
-//    @GetMapping("/home")
-//    public void home(){
-//
-//    }
+    @GetMapping("/memberview")
+    public String memberview(Model model) {
+        return "admin.memberview.page";
+    }
 
 }
