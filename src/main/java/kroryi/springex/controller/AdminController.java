@@ -11,32 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admin")
 public class AdminController {
 
-    
-
-    @GetMapping("/")
+    @GetMapping("")
     public String home(Model model) {
         return "admin.index.page";
-    }
-
-    @GetMapping("/memberlist")
-    public String memberlist(Model model) {
-        model.addAttribute("test","testetstesetse");
-        return "admin.memberlist.page";
-    }
-
-    @GetMapping("/memberregister")
-    public String memberregister(Model model) {
-        return "admin.memberregister.page";
-    }
-
-    @GetMapping("/memberupdate")
-    public String memberupdate(Model model) {
-        return "admin.memberupdate.page";
-    }
-
-    @GetMapping("/memberview")
-    public String memberview(Model model) {
-        return "admin.memberview.page";
     }
 
 }

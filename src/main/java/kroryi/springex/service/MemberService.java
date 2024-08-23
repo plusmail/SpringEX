@@ -7,10 +7,8 @@ import kroryi.springex.dto.TodoDTO;
 
 public interface MemberService {
 
-    //TodoMapper insert와 연결
     void register(MemberDTO dto);
 
-//    List<TodoDTO> getAll();
     PageResponseDTO<MemberDTO> getList(PageRequestDTO pageRequestDTO);
 
     MemberDTO getOne(String mid);

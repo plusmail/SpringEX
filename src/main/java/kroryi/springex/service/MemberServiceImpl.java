@@ -23,7 +23,7 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public void register(MemberDTO dto) {
-        log.info("Register todo: {}" , dto);
+        log.info("Register member: {}" , dto);
         MemberVO vo = modelMapper.map(dto, MemberVO.class);
         log.info(vo);
 

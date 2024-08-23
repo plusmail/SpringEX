@@ -33,8 +33,7 @@
         </a>
         <div id="collapseMember" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="memberlist">회원목록</a>
-                <a class="collapse-item" href="cards">사원관리</a>
+                <a class="collapse-item" href="/admin/memberlist">회원목록</a>
             </div>
         </div>
     </li>
