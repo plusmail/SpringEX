@@ -62,7 +62,7 @@
                                             id="exampleRepeatPassword" placeholder="Repeat Password">
                                     </div>
                                 </div>
-                                <a href="login.jsp" class="btn btn-primary btn-user btn-block">
+                                <a href="login/login.jsp" class="btn btn-primary btn-user btn-block">
                                     Register Account
                                 </a>
                                 <hr>
@@ -78,7 +78,7 @@
                                 <a class="small" href="forgot-password.jsp">Forgot Password?</a>
                             </div>
                             <div class="text-center">
-                                <a class="small" href="login.jsp">Already have an account? Login!</a>
+                                <a class="small" href="login/login.jsp">Already have an account? Login!</a>
                             </div>
                         </div>
                     </div>

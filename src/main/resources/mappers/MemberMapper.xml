@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kroryi.springex.mapper.MemberMapper">
+
+    <insert id="insert">
+        insert into tbl_member (mid,mpw,mname)
+        values (#{mid}, #{mpw}, #{mname})
+    </insert>
+
+    <select id="selectAll" resultType="kroryi.springex.domain.MemberVO">
+        select *  from tbl_member order by mid desc
+    </select>
+
+    <select id="selectOne" resultType="kroryi.springex.domain.MemberVO">
+        select * from tbl_member where mid= #{mid}
+    </select>
+
+    <delete id="delete">
+        delete from tbl_member where mid = #{mid}
+    </delete>
+
+    <update id="update">
+        update tbl_member set mid=#{mid},
+                            mpw=#{mpw},
+                            mname=#{mname}
+        where mid= #{mid}
+    </update>
+
+    <select id="selectList" resultType="kroryi.springex.domain.MemberVO">
+        select * from tbl_member
+        <include refid="search"/>
+        order by tno desc limit #{skip}, #{size}
+    </select>
+
+    <select id="getCount" resultType="int">
+        select count(mid) from tbl_member
+        <include refid="search"/>
+
+    </select>
+
+
+    <sql id="search">
+        <where>
+            <if test="types != null and types.length > 0">
+                <foreach collection="types" item="type" open="(" close=")" separator=" OR ">
+                    <if test="type == 't'.toString()">
+                        title like concat('%', #{keyword}, '%')
+                    </if>
+                    <if test="type == 'w'.toString()">
+                        writer like concat('%', #{keyword}, '%')
+                    </if>
+                </foreach>
+            </if>
+
+        </where>
+    </sql>
+</mapper>

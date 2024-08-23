@@ -42,14 +42,18 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" action="/admin/login" method="post">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
+                                            <input type="text"
+                                                   name="mid"
+                                                   class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="Enter Email Address...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
+                                            <input type="password"
+                                                   name="mpw"
+                                                   class="form-control form-control-user"
                                                 id="exampleInputPassword" placeholder="Password">
                                         </div>
                                         <div class="form-group">
@@ -59,23 +63,23 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <a href="home.jsp" class="btn btn-primary btn-user btn-block">
-                                            Login
-                                        </a>
+
+                                        <button type="submit"  class="btn btn-primary btn-user btn-block">로그인</button>
+
                                         <hr>
-                                        <a href="home.jsp" class="btn btn-google btn-user btn-block">
+                                        <a href="../home.jsp" class="btn btn-google btn-user btn-block">
                                             <i class="fab fa-google fa-fw"></i> Login with Google
                                         </a>
-                                        <a href="home.jsp" class="btn btn-facebook btn-user btn-block">
+                                        <a href="../home.jsp" class="btn btn-facebook btn-user btn-block">
                                             <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
                                         </a>
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="forgot-password.jsp">Forgot Password?</a>
+                                        <a class="small" href="../forgot-password.jsp">Forgot Password?</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="register.jsp">Create an Account!</a>
+                                        <a class="small" href="../register.jsp">Create an Account!</a>
                                     </div>
                                 </div>
                             </div>

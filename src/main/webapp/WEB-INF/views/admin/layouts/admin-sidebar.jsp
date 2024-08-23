@@ -16,7 +16,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="/admin">
+        <a class="nav-link" href="/admin/">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -24,61 +24,70 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Interface
-    </div>
-
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-           aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMember"
+           aria-expanded="true" aria-controls="collapseMember">
+            <i class="fas fa-user-cog"></i>
             <span>회원관리</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseMember" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">회원/사원관리:</h6>
-                <a class="collapse-item" href="member_list">회원목록</a>
+                <a class="collapse-item" href="memberlist">회원목록</a>
                 <a class="collapse-item" href="cards">사원관리</a>
             </div>
         </div>
     </li>
 
+
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-           aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEmp"
+           aria-expanded="true" aria-controls="collapseEmp">
+            <i class="fas fa-user-tie"></i>
+            <span>사원관리</span>
+        </a>
+        <div id="collapseEmp" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="user_list">직원목록</a>
+                <a class="collapse-item" href="cards">사원관리</a>
+            </div>
+        </div>
+    </li>
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReception"
+           aria-expanded="true" aria-controls="collapseReception">
+            <i class="fas fas fa-pen"></i>
+            <span>접수관리</span>
+        </a>
+        <div id="collapseReception" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="user_list">접수자 목록</a>
+                <a class="collapse-item" href="cards">접수설정</a>
+                <a class="collapse-item" href="cards">문진표</a>
+                <a class="collapse-item" href="cards">문자/아림톡 전송</a>
+            </div>
+        </div>
+    </li>
+
+
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTodo"
+           aria-expanded="true" aria-controls="collapseTodo">
+            <i class="fas fa-list-alt"></i>
             <span>Todo관리</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseTodo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Todo:</h6>
                 <a class="collapse-item" href="/admin/todo/list">Todo목록보기</a>
                 <a class="collapse-item" href="/admin/todo/register">Todo등록</a>
             </div>
         </div>
     </li>
 
-
-
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-           aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Components</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="buttons">Buttons</a>
-                <a class="collapse-item" href="cards">Cards</a>
-            </div>
-        </div>
-    </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
@@ -117,7 +126,7 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Login Screens:</h6>
-                <a class="collapse-item" href="../login.jsp">Login</a>
+                <a class="collapse-item" href="../login/login.jsp">Login</a>
                 <a class="collapse-item" href="../register.jsp">Register</a>
                 <a class="collapse-item" href="../forgot-password.jsp">Forgot Password</a>
                 <div class="collapse-divider"></div>

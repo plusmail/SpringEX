@@ -50,7 +50,7 @@
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="Enter Email Address...">
                                         </div>
-                                        <a href="login.jsp" class="btn btn-primary btn-user btn-block">
+                                        <a href="login/login.jsp" class="btn btn-primary btn-user btn-block">
                                             Reset Password
                                         </a>
                                     </form>
@@ -59,7 +59,7 @@
                                         <a class="small" href="register.jsp">Create an Account!</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="login.jsp">Already have an account? Login!</a>
+                                        <a class="small" href="login/login.jsp">Already have an account? Login!</a>
                                     </div>
                                 </div>
                             </div>
